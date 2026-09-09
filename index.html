@@ -1,547 +1,634 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>من قريب | متجر محلي</title>
+<title>من قريب | متجر محلي</title>
 
-  <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&display=swap');
 
-    body {
-      font-family: Arial, sans-serif;
-      background: #f7f7f7;
-      color: #222;
-      direction: rtl;
-    }
+:root {
+  --primary: #315c4c;
+  --primary-dark: #24483b;
+  --cream: #f6f2e9;
+  --gold: #c69a45;
+  --text: #202522;
+  --muted: #777d78;
+  --white: #ffffff;
+  --background: #fbfaf7;
+  --border: #e9e5dc;
+}
 
-    button,
-    input {
-      font-family: inherit;
-    }
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
 
-    /* =========================
-       HEADER
-    ========================= */
+body {
+  font-family: "Cairo", sans-serif;
+  background: var(--background);
+  color: var(--text);
+}
 
-    header {
-      background: #ffffff;
-      border-bottom: 1px solid #e5e5e5;
-      padding: 16px 5%;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 20px;
-      position: sticky;
-      top: 0;
-      z-index: 100;
-    }
+/* ===== HEADER ===== */
 
-    .logo {
-      font-size: 28px;
-      font-weight: 800;
-      color: #222;
-      white-space: nowrap;
-    }
+header {
+  height: 78px;
+  background: var(--white);
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  gap: 28px;
+  padding: 0 5%;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
 
-    .logo span {
-      color: #b8860b;
-    }
+.logo {
+  font-size: 27px;
+  font-weight: 800;
+  white-space: nowrap;
+  color: var(--text);
+}
 
-    .search-box {
-      flex: 1;
-      max-width: 600px;
-      position: relative;
-    }
+.logo span {
+  color: var(--primary);
+}
 
-    .search-box input {
-      width: 100%;
-      height: 46px;
-      border: 1px solid #ddd;
-      border-radius: 24px;
-      padding: 0 20px;
-      outline: none;
-      background: #f8f8f8;
-      font-size: 15px;
-    }
+.search {
+  flex: 1;
+  max-width: 620px;
+  margin: auto;
+}
 
-    .search-box input:focus {
-      border-color: #b8860b;
-      background: #fff;
-    }
+.search input {
+  width: 100%;
+  height: 46px;
+  border: 1px solid var(--border);
+  background: #f8f7f3;
+  border-radius: 25px;
+  padding: 0 20px;
+  font-family: inherit;
+  font-size: 14px;
+  outline: none;
+}
 
-    .cart-button {
-      border: none;
-      background: #222;
-      color: white;
-      height: 46px;
-      padding: 0 18px;
-      border-radius: 23px;
-      cursor: pointer;
-      font-size: 15px;
-      white-space: nowrap;
-    }
+.search input:focus {
+  border-color: var(--primary);
+}
 
-    /* =========================
-       HERO
-    ========================= */
+.cart {
+  background: var(--primary);
+  color: white;
+  border: none;
+  border-radius: 24px;
+  padding: 11px 19px;
+  font-family: inherit;
+  font-weight: 700;
+  cursor: pointer;
+}
 
-    .hero {
-      margin: 25px 5%;
-      min-height: 260px;
-      border-radius: 22px;
-      background: linear-gradient(135deg, #e9dfca, #f7f1e5);
-      display: flex;
-      align-items: center;
-      padding: 40px;
-    }
+/* ===== HERO ===== */
 
-    .hero-content {
-      max-width: 650px;
-    }
+.hero {
+  margin: 30px 5%;
+  min-height: 300px;
+  border-radius: 28px;
+  background: var(--cream);
+  display: flex;
+  align-items: center;
+  padding: 45px 6%;
+  position: relative;
+  overflow: hidden;
+}
 
-    .hero h1 {
-      font-size: clamp(30px, 5vw, 52px);
-      margin-bottom: 12px;
-      line-height: 1.2;
-    }
+.hero::after {
+  content: "";
+  position: absolute;
+  width: 260px;
+  height: 260px;
+  border-radius: 50%;
+  background: rgba(198,154,69,0.12);
+  left: -60px;
+  bottom: -100px;
+}
 
-    .hero p {
-      font-size: 18px;
-      color: #555;
-      line-height: 1.8;
-    }
+.hero-content {
+  max-width: 650px;
+  position: relative;
+  z-index: 2;
+}
 
-    /* =========================
-       CATEGORIES
-    ========================= */
+.hero small {
+  color: var(--gold);
+  font-weight: 700;
+  font-size: 14px;
+}
 
-    .section {
-      margin: 35px 5%;
-    }
+.hero h1 {
+  font-size: clamp(32px, 5vw, 52px);
+  line-height: 1.3;
+  margin: 10px 0;
+}
 
-    .section-title {
-      font-size: 25px;
-      margin-bottom: 18px;
-    }
+.hero p {
+  color: var(--muted);
+  font-size: 17px;
+  line-height: 2;
+}
 
-    .categories {
-      display: flex;
-      gap: 12px;
-      overflow-x: auto;
-      padding-bottom: 8px;
-    }
+/* ===== SECTIONS ===== */
 
-    .category {
-      min-width: 115px;
-      height: 55px;
-      border: 1px solid #ddd;
-      background: white;
-      border-radius: 14px;
-      cursor: pointer;
-      font-size: 15px;
-      transition: 0.2s;
-    }
+.section {
+  margin: 40px 5%;
+}
 
-    .category:hover {
-      transform: translateY(-2px);
-      border-color: #b8860b;
-    }
+.section-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 22px;
+}
 
-    /* =========================
-       PRODUCTS
-    ========================= */
+.section-title {
+  font-size: 26px;
+  font-weight: 800;
+}
 
-    .products {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 20px;
-    }
+/* ===== CATEGORIES ===== */
 
-    .product-card {
-      background: white;
-      border-radius: 18px;
-      overflow: hidden;
-      border: 1px solid #e8e8e8;
-      transition: 0.2s;
-    }
+.categories {
+  display: flex;
+  gap: 26px;
+  overflow-x: auto;
+  padding: 5px 2px 15px;
+  scrollbar-width: none;
+}
 
-    .product-card:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 8px 25px rgba(0,0,0,0.07);
-    }
+.categories::-webkit-scrollbar {
+  display: none;
+}
 
-    .product-image {
-      height: 220px;
-      background: #eeeeee;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: #999;
-      font-size: 14px;
-    }
+.category {
+  min-width: 92px;
+  text-align: center;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
+  color: var(--text);
+}
 
-    .product-info {
-      padding: 16px;
-    }
+.category-icon {
+  width: 72px;
+  height: 72px;
+  margin: auto auto 9px;
+  border-radius: 50%;
+  background: var(--cream);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 27px;
+  border: 1px solid var(--border);
+  transition: 0.2s;
+}
 
-    .product-name {
-      font-size: 17px;
-      font-weight: 700;
-      margin-bottom: 8px;
-    }
+.category:hover .category-icon {
+  background: var(--primary);
+  color: white;
+  transform: translateY(-3px);
+}
 
-    .product-description {
-      font-size: 13px;
-      color: #777;
-      line-height: 1.6;
-      margin-bottom: 12px;
-    }
+.category-name {
+  font-size: 13px;
+  font-weight: 700;
+}
 
-    .product-bottom {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 10px;
-    }
+/* ===== PRODUCTS ===== */
 
-    .price {
-      font-weight: 800;
-      font-size: 17px;
-    }
+.products {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
 
-    .add-button {
-      border: none;
-      background: #222;
-      color: white;
-      border-radius: 10px;
-      padding: 9px 13px;
-      cursor: pointer;
-    }
+.product {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 22px;
+  overflow: hidden;
+  transition: 0.2s;
+}
 
-    /* =========================
-       FOOTER
-    ========================= */
+.product:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 30px rgba(0,0,0,0.06);
+}
 
-    footer {
-      margin-top: 60px;
-      padding: 30px 5%;
-      background: #222;
-      color: #fff;
-      text-align: center;
-    }
+.product-image {
+  height: 230px;
+  background: #f1f0ec;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #aaa;
+}
 
-    /* =========================
-       MOBILE
-    ========================= */
+.product-info {
+  padding: 16px;
+}
 
-    @media (max-width: 900px) {
+.product-name {
+  font-size: 16px;
+  font-weight: 800;
+  margin-bottom: 5px;
+}
 
-      header {
-        flex-wrap: wrap;
-      }
+.product-description {
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.7;
+  margin-bottom: 15px;
+}
 
-      .logo {
-        font-size: 24px;
-      }
+.product-bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
 
-      .search-box {
-        order: 3;
-        flex-basis: 100%;
-        max-width: none;
-      }
+.price {
+  font-size: 17px;
+  font-weight: 800;
+}
 
-      .products {
-        grid-template-columns: repeat(2, 1fr);
-      }
+.add {
+  border: none;
+  background: var(--primary);
+  color: white;
+  padding: 9px 13px;
+  border-radius: 11px;
+  font-family: inherit;
+  font-weight: 700;
+  cursor: pointer;
+}
 
-      .product-image {
-        height: 180px;
-      }
-    }
+/* ===== FOOTER ===== */
 
-    @media (max-width: 500px) {
+footer {
+  margin-top: 70px;
+  padding: 35px 5%;
+  background: var(--primary-dark);
+  color: white;
+  text-align: center;
+}
 
-      .hero {
-        margin: 15px 4%;
-        padding: 25px;
-        min-height: 210px;
-      }
+footer p {
+  font-size: 13px;
+  opacity: 0.8;
+}
 
-      .section {
-        margin: 28px 4%;
-      }
+/* ===== TABLET ===== */
 
-      .products {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 12px;
-      }
+@media (max-width: 900px) {
 
-      .product-image {
-        height: 150px;
-      }
+  header {
+    height: auto;
+    padding: 14px 4%;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
 
-      .product-info {
-        padding: 12px;
-      }
+  .search {
+    order: 3;
+    flex-basis: 100%;
+  }
 
-      .product-name {
-        font-size: 15px;
-      }
+  .products {
+    grid-template-columns: repeat(2, 1fr);
+  }
 
-      .product-description {
-        font-size: 12px;
-      }
+  .product-image {
+    height: 190px;
+  }
+}
 
-      .price {
-        font-size: 14px;
-      }
+/* ===== MOBILE ===== */
 
-      .add-button {
-        padding: 7px 9px;
-        font-size: 12px;
-      }
-    }
-  </style>
+@media (max-width: 500px) {
+
+  header {
+    padding: 13px 4%;
+  }
+
+  .logo {
+    font-size: 23px;
+  }
+
+  .cart {
+    padding: 9px 14px;
+    font-size: 12px;
+  }
+
+  .hero {
+    margin: 18px 4%;
+    min-height: 230px;
+    padding: 28px;
+    border-radius: 23px;
+  }
+
+  .hero h1 {
+    font-size: 32px;
+  }
+
+  .hero p {
+    font-size: 14px;
+  }
+
+  .section {
+    margin: 32px 4%;
+  }
+
+  .section-title {
+    font-size: 23px;
+  }
+
+  .categories {
+    gap: 20px;
+  }
+
+  .category-icon {
+    width: 65px;
+    height: 65px;
+  }
+
+  .products {
+    gap: 12px;
+  }
+
+  .product {
+    border-radius: 17px;
+  }
+
+  .product-image {
+    height: 155px;
+  }
+
+  .product-info {
+    padding: 12px;
+  }
+
+  .product-name {
+    font-size: 14px;
+  }
+
+  .product-description {
+    font-size: 11px;
+  }
+
+  .price {
+    font-size: 14px;
+  }
+
+  .add {
+    font-size: 11px;
+    padding: 7px 9px;
+  }
+}
+</style>
 </head>
 
 <body>
 
-  <!-- HEADER -->
-  <header>
+<header>
 
-    <div class="logo">
-      من <span>قريب</span>
-    </div>
+  <div class="logo">
+    من <span>قريب</span>
+  </div>
 
-    <div class="search-box">
-      <input
-        type="search"
-        placeholder="ابحث عن منتج..."
-        aria-label="البحث عن منتج"
-      >
-    </div>
+  <div class="search">
+    <input type="search" placeholder="ابحث عن منتج...">
+  </div>
 
-    <button class="cart-button">
-      🛒 السلة
+  <button class="cart">
+    🛒 السلة
+  </button>
+
+</header>
+
+
+<section class="hero">
+
+  <div class="hero-content">
+
+    <small>متجرك المحلي</small>
+
+    <h1>كل اللي تحتاجه<br>من قريب.</h1>
+
+    <p>
+      اكتشف منتجات متنوعة من حولك،
+      واختر اللي يناسبك بكل سهولة.
+    </p>
+
+  </div>
+
+</section>
+
+
+<section class="section">
+
+  <div class="section-header">
+    <h2 class="section-title">تسوق حسب القسم</h2>
+  </div>
+
+  <div class="categories">
+
+    <button class="category">
+      <div class="category-icon">✨</div>
+      <div class="category-name">الكل</div>
     </button>
 
-  </header>
+    <button class="category">
+      <div class="category-icon">📱</div>
+      <div class="category-name">إلكترونيات</div>
+    </button>
+
+    <button class="category">
+      <div class="category-icon">👕</div>
+      <div class="category-name">أزياء</div>
+    </button>
+
+    <button class="category">
+      <div class="category-icon">🏠</div>
+      <div class="category-name">منزل</div>
+    </button>
+
+    <button class="category">
+      <div class="category-icon">🧴</div>
+      <div class="category-name">عناية</div>
+    </button>
+
+    <button class="category">
+      <div class="category-icon">🎁</div>
+      <div class="category-name">أخرى</div>
+    </button>
+
+  </div>
+
+</section>
 
 
-  <!-- HERO -->
-  <section class="hero">
+<section class="section">
 
-    <div class="hero-content">
+  <div class="section-header">
+    <h2 class="section-title">منتجات مميزة</h2>
+  </div>
 
-      <h1>كل ما تحتاجه من قريب</h1>
+  <div class="products">
 
-      <p>
-        متجر محلي يجمع لك المنتجات التي تحتاجها
-        ويوصلها إليك بسهولة.
-      </p>
+    <article class="product">
 
-    </div>
+      <div class="product-image">
+        صورة المنتج
+      </div>
 
-  </section>
+      <div class="product-info">
 
-
-  <!-- CATEGORIES -->
-  <section class="section">
-
-    <h2 class="section-title">
-      الأقسام
-    </h2>
-
-    <div class="categories">
-
-      <button class="category">
-        الكل
-      </button>
-
-      <button class="category">
-        إلكترونيات
-      </button>
-
-      <button class="category">
-        أزياء
-      </button>
-
-      <button class="category">
-        منزل
-      </button>
-
-      <button class="category">
-        عناية
-      </button>
-
-      <button class="category">
-        أخرى
-      </button>
-
-    </div>
-
-  </section>
-
-
-  <!-- PRODUCTS -->
-  <section class="section">
-
-    <h2 class="section-title">
-      المنتجات
-    </h2>
-
-    <div class="products">
-
-      <!-- PRODUCT 1 -->
-      <article class="product-card">
-
-        <div class="product-image">
-          صورة المنتج
+        <div class="product-name">
+          منتج تجريبي
         </div>
 
-        <div class="product-info">
+        <div class="product-description">
+          وصف مختصر للمنتج يظهر هنا.
+        </div>
 
-          <div class="product-name">
-            منتج تجريبي
+        <div class="product-bottom">
+
+          <div class="price">
+            50,000 ل.س
           </div>
 
-          <div class="product-description">
-            وصف مختصر للمنتج يظهر هنا.
-          </div>
-
-          <div class="product-bottom">
-
-            <div class="price">
-              50,000 ل.س
-            </div>
-
-            <button class="add-button">
-              أضف للسلة
-            </button>
-
-          </div>
+          <button class="add">
+            أضف للسلة
+          </button>
 
         </div>
 
-      </article>
+      </div>
+
+    </article>
 
 
-      <!-- PRODUCT 2 -->
-      <article class="product-card">
+    <article class="product">
 
-        <div class="product-image">
-          صورة المنتج
+      <div class="product-image">
+        صورة المنتج
+      </div>
+
+      <div class="product-info">
+
+        <div class="product-name">
+          منتج تجريبي
         </div>
 
-        <div class="product-info">
-
-          <div class="product-name">
-            منتج تجريبي
-          </div>
-
-          <div class="product-description">
-            وصف مختصر للمنتج يظهر هنا.
-          </div>
-
-          <div class="product-bottom">
-
-            <div class="price">
-              75,000 ل.س
-            </div>
-
-            <button class="add-button">
-              أضف للسلة
-            </button>
-
-          </div>
-
+        <div class="product-description">
+          وصف مختصر للمنتج يظهر هنا.
         </div>
 
-      </article>
+        <div class="product-bottom">
 
-
-      <!-- PRODUCT 3 -->
-      <article class="product-card">
-
-        <div class="product-image">
-          صورة المنتج
-        </div>
-
-        <div class="product-info">
-
-          <div class="product-name">
-            منتج تجريبي
+          <div class="price">
+            75,000 ل.س
           </div>
 
-          <div class="product-description">
-            وصف مختصر للمنتج يظهر هنا.
-          </div>
-
-          <div class="product-bottom">
-
-            <div class="price">
-              100,000 ل.س
-            </div>
-
-            <button class="add-button">
-              أضف للسلة
-            </button>
-
-          </div>
+          <button class="add">
+            أضف للسلة
+          </button>
 
         </div>
 
-      </article>
+      </div>
+
+    </article>
 
 
-      <!-- PRODUCT 4 -->
-      <article class="product-card">
+    <article class="product">
 
-        <div class="product-image">
-          صورة المنتج
+      <div class="product-image">
+        صورة المنتج
+      </div>
+
+      <div class="product-info">
+
+        <div class="product-name">
+          منتج تجريبي
         </div>
 
-        <div class="product-info">
+        <div class="product-description">
+          وصف مختصر للمنتج يظهر هنا.
+        </div>
 
-          <div class="product-name">
-            منتج تجريبي
+        <div class="product-bottom">
+
+          <div class="price">
+            100,000 ل.س
           </div>
 
-          <div class="product-description">
-            وصف مختصر للمنتج يظهر هنا.
-          </div>
-
-          <div class="product-bottom">
-
-            <div class="price">
-              125,000 ل.س
-            </div>
-
-            <button class="add-button">
-              أضف للسلة
-            </button>
-
-          </div>
+          <button class="add">
+            أضف للسلة
+          </button>
 
         </div>
 
-      </article>
+      </div>
 
-    </div>
-
-  </section>
+    </article>
 
 
-  <!-- FOOTER -->
-  <footer>
-    <p>© 2026 من قريب — متجر محلي</p>
-  </footer>
+    <article class="product">
+
+      <div class="product-image">
+        صورة المنتج
+      </div>
+
+      <div class="product-info">
+
+        <div class="product-name">
+          منتج تجريبي
+        </div>
+
+        <div class="product-description">
+          وصف مختصر للمنتج يظهر هنا.
+        </div>
+
+        <div class="product-bottom">
+
+          <div class="price">
+            125,000 ل.س
+          </div>
+
+          <button class="add">
+            أضف للسلة
+          </button>
+
+        </div>
+
+      </div>
+
+    </article>
+
+  </div>
+
+</section>
+
+
+<footer>
+  <p>© 2026 من قريب — متجر محلي</p>
+</footer>
 
 </body>
 </html>
