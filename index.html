@@ -4,519 +4,1061 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>من قريب | متجر محلي</title>
+<title>من قريب</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&display=swap');
 
-:root {
-  --primary: #315c4c;
-  --primary-dark: #24483b;
-  --cream: #f6f2e9;
-  --gold: #c69a45;
-  --text: #202522;
-  --muted: #777d78;
-  --white: #ffffff;
-  --background: #fbfaf7;
-  --border: #e9e5dc;
+:root{
+  --green:#164d3d;
+  --green2:#245d4c;
+  --cream:#f5f0e6;
+  --cream2:#eee7d9;
+  --bg:#faf8f2;
+  --text:#234437;
+  --muted:#6e746f;
+  --gold:#c9a451;
+  --white:#ffffff;
+  --line:#ddd8cc;
 }
 
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
 }
 
-body {
-  font-family: "Cairo", sans-serif;
-  background: var(--background);
-  color: var(--text);
+html{
+  scroll-behavior:smooth;
 }
 
-/* ===== HEADER ===== */
-
-header {
-  height: 78px;
-  background: var(--white);
-  border-bottom: 1px solid var(--border);
-  display: flex;
-  align-items: center;
-  gap: 28px;
-  padding: 0 5%;
-  position: sticky;
-  top: 0;
-  z-index: 100;
+body{
+  font-family:"Tajawal",sans-serif;
+  background:var(--bg);
+  color:var(--text);
+  padding-bottom:82px;
 }
 
-.logo {
-  font-size: 27px;
-  font-weight: 800;
-  white-space: nowrap;
-  color: var(--text);
+button,
+input{
+  font-family:inherit;
 }
 
-.logo span {
-  color: var(--primary);
+/* ================= HEADER ================= */
+
+.header{
+  height:105px;
+  padding:15px 5%;
+  background:var(--bg);
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:20px;
 }
 
-.search {
-  flex: 1;
-  max-width: 620px;
-  margin: auto;
+.header-side{
+  width:160px;
+  display:flex;
+  align-items:center;
+  gap:28px;
 }
 
-.search input {
-  width: 100%;
-  height: 46px;
-  border: 1px solid var(--border);
-  background: #f8f7f3;
-  border-radius: 25px;
-  padding: 0 20px;
-  font-family: inherit;
-  font-size: 14px;
-  outline: none;
+.header-side.left{
+  justify-content:flex-start;
 }
 
-.search input:focus {
-  border-color: var(--primary);
+.header-side.right{
+  justify-content:flex-end;
 }
 
-.cart {
-  background: var(--primary);
-  color: white;
-  border: none;
-  border-radius: 24px;
-  padding: 11px 19px;
-  font-family: inherit;
-  font-weight: 700;
-  cursor: pointer;
+/* السلة */
+
+.cart{
+  position:relative;
+  border:0;
+  background:transparent;
+  color:var(--green);
+  cursor:pointer;
 }
 
-/* ===== HERO ===== */
-
-.hero {
-  margin: 30px 5%;
-  min-height: 300px;
-  border-radius: 28px;
-  background: var(--cream);
-  display: flex;
-  align-items: center;
-  padding: 45px 6%;
-  position: relative;
-  overflow: hidden;
+.cart-icon{
+  width:42px;
+  height:42px;
 }
 
-.hero::after {
-  content: "";
-  position: absolute;
-  width: 260px;
-  height: 260px;
-  border-radius: 50%;
-  background: rgba(198,154,69,0.12);
-  left: -60px;
-  bottom: -100px;
+.cart-count{
+  position:absolute;
+  top:-4px;
+  right:-4px;
+  width:22px;
+  height:22px;
+  border-radius:50%;
+  background:var(--green);
+  color:white;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:11px;
+  font-weight:700;
 }
 
-.hero-content {
-  max-width: 650px;
-  position: relative;
-  z-index: 2;
+/* خدمة العملاء */
+
+.support{
+  border:0;
+  background:transparent;
+  color:var(--green);
+  cursor:pointer;
 }
 
-.hero small {
-  color: var(--gold);
-  font-weight: 700;
-  font-size: 14px;
+.support-icon{
+  width:39px;
+  height:39px;
 }
 
-.hero h1 {
-  font-size: clamp(32px, 5vw, 52px);
-  line-height: 1.3;
-  margin: 10px 0;
+/* الشعار */
+
+.logo{
+  text-align:center;
+  flex:1;
+  line-height:1;
 }
 
-.hero p {
-  color: var(--muted);
-  font-size: 17px;
-  line-height: 2;
+.logo-name{
+  font-size:46px;
+  font-weight:800;
+  letter-spacing:-2px;
+  color:var(--green);
 }
 
-/* ===== SECTIONS ===== */
-
-.section {
-  margin: 40px 5%;
+.logo-leaf{
+  font-size:28px;
+  display:block;
+  height:25px;
+  transform:rotate(-8deg);
 }
 
-.section-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 22px;
+.logo-sub{
+  margin-top:8px;
+  font-size:12px;
+  font-weight:600;
+  color:#68726b;
 }
 
-.section-title {
-  font-size: 26px;
-  font-weight: 800;
+/* ================= SEARCH ================= */
+
+.search-area{
+  padding:0 5%;
 }
 
-/* ===== CATEGORIES ===== */
-
-.categories {
-  display: flex;
-  gap: 26px;
-  overflow-x: auto;
-  padding: 5px 2px 15px;
-  scrollbar-width: none;
+.search-box{
+  height:61px;
+  border:2px solid #ddd8cf;
+  border-radius:32px;
+  background:#fbfaf6;
+  display:flex;
+  align-items:center;
+  padding:0 21px;
+  gap:13px;
 }
 
-.categories::-webkit-scrollbar {
-  display: none;
+.search-box svg{
+  width:27px;
+  height:27px;
+  color:var(--green);
+  flex-shrink:0;
 }
 
-.category {
-  min-width: 92px;
-  text-align: center;
-  background: transparent;
-  border: none;
-  cursor: pointer;
-  font-family: inherit;
-  color: var(--text);
+.search-box input{
+  border:0;
+  outline:0;
+  background:transparent;
+  width:100%;
+  font-size:16px;
+  color:var(--text);
+  text-align:right;
 }
 
-.category-icon {
-  width: 72px;
-  height: 72px;
-  margin: auto auto 9px;
-  border-radius: 50%;
-  background: var(--cream);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 27px;
-  border: 1px solid var(--border);
-  transition: 0.2s;
+.search-box input::placeholder{
+  color:#858681;
 }
 
-.category:hover .category-icon {
-  background: var(--primary);
-  color: white;
-  transform: translateY(-3px);
+/* ================= HERO ================= */
+
+.hero{
+  margin:22px 3.5% 0;
+  height:390px;
+  border-radius:22px;
+  overflow:hidden;
+  position:relative;
+  background:
+    linear-gradient(
+      90deg,
+      rgba(245,240,230,.15),
+      rgba(245,240,230,.96) 62%
+    ),
+    linear-gradient(135deg,#9b815e,#d9c7a8);
 }
 
-.category-name {
-  font-size: 13px;
-  font-weight: 700;
+.hero-image{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  opacity:.88;
 }
 
-/* ===== PRODUCTS ===== */
-
-.products {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 20px;
+.hero-content{
+  position:absolute;
+  right:8%;
+  top:50%;
+  transform:translateY(-50%);
+  max-width:390px;
+  z-index:2;
 }
 
-.product {
-  background: var(--white);
-  border: 1px solid var(--border);
-  border-radius: 22px;
-  overflow: hidden;
-  transition: 0.2s;
+.hero-logo{
+  font-size:54px;
+  font-weight:800;
+  color:var(--green);
+  line-height:1;
+  margin-bottom:4px;
 }
 
-.product:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 12px 30px rgba(0,0,0,0.06);
+.hero-sub{
+  font-size:18px;
+  font-weight:600;
+  color:#536158;
+  margin-bottom:18px;
 }
 
-.product-image {
-  height: 230px;
-  background: #f1f0ec;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #aaa;
+.hero-text{
+  font-size:15px;
+  line-height:1.9;
+  color:#59615b;
+  margin-bottom:18px;
 }
 
-.product-info {
-  padding: 16px;
+.shop-now{
+  border:0;
+  background:var(--green);
+  color:white;
+  padding:13px 27px;
+  border-radius:28px;
+  font-size:16px;
+  font-weight:700;
+  cursor:pointer;
 }
 
-.product-name {
-  font-size: 16px;
-  font-weight: 800;
-  margin-bottom: 5px;
+.shop-now span{
+  font-size:22px;
+  vertical-align:-2px;
+  margin-right:8px;
 }
 
-.product-description {
-  color: var(--muted);
-  font-size: 12px;
-  line-height: 1.7;
-  margin-bottom: 15px;
+.hero-dots{
+  position:absolute;
+  bottom:16px;
+  left:50%;
+  transform:translateX(-50%);
+  display:flex;
+  gap:7px;
+  z-index:3;
 }
 
-.product-bottom {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+.hero-dot{
+  width:10px;
+  height:10px;
+  border-radius:50%;
+  background:white;
+  opacity:.8;
 }
 
-.price {
-  font-size: 17px;
-  font-weight: 800;
+.hero-dot.active{
+  background:var(--green);
+  opacity:1;
 }
 
-.add {
-  border: none;
-  background: var(--primary);
-  color: white;
-  padding: 9px 13px;
-  border-radius: 11px;
-  font-family: inherit;
-  font-weight: 700;
-  cursor: pointer;
+/* ================= SECTION ================= */
+
+.section{
+  margin:28px 3.5%;
 }
 
-/* ===== FOOTER ===== */
-
-footer {
-  margin-top: 70px;
-  padding: 35px 5%;
-  background: var(--primary-dark);
-  color: white;
-  text-align: center;
+.section-title{
+  font-size:27px;
+  font-weight:800;
+  margin-bottom:18px;
+  color:var(--green);
 }
 
-footer p {
-  font-size: 13px;
-  opacity: 0.8;
+.section-title::before{
+  content:"";
+  display:inline-block;
+  width:10px;
+  height:10px;
+  background:var(--green);
+  border-radius:50%;
+  margin-left:8px;
 }
 
-/* ===== TABLET ===== */
+/* ================= CATEGORIES ================= */
 
-@media (max-width: 900px) {
+.categories{
+  display:grid;
+  grid-template-columns:repeat(5,1fr);
+  gap:14px;
+}
 
-  header {
-    height: auto;
-    padding: 14px 4%;
-    flex-wrap: wrap;
-    gap: 12px;
+.category{
+  border:0;
+  background:var(--cream);
+  border-radius:16px;
+  min-height:115px;
+  padding:13px 8px;
+  cursor:pointer;
+  color:var(--text);
+  transition:.2s;
+}
+
+.category:hover{
+  transform:translateY(-3px);
+}
+
+.category-icon{
+  width:55px;
+  height:55px;
+  margin:auto;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  color:#303832;
+}
+
+.category-icon svg{
+  width:48px;
+  height:48px;
+  stroke-width:1.5;
+}
+
+.category-name{
+  font-size:14px;
+  font-weight:600;
+  margin-top:8px;
+}
+
+/* ================= PRODUCTS ================= */
+
+.products-header{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  margin-bottom:16px;
+}
+
+.products-header .section-title{
+  margin:0;
+}
+
+.view-all{
+  border:0;
+  background:transparent;
+  color:var(--green);
+  font-size:15px;
+  font-weight:600;
+  cursor:pointer;
+}
+
+.view-all::before{
+  content:"‹";
+  font-size:23px;
+  margin-left:7px;
+}
+
+.products{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:17px;
+}
+
+.product{
+  background:white;
+  border:1px solid #e3dfd5;
+  border-radius:14px;
+  overflow:hidden;
+  position:relative;
+}
+
+.product-image{
+  height:220px;
+  background:
+    linear-gradient(135deg,#e2d4c0,#c4b095);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  position:relative;
+}
+
+.product-image span{
+  color:white;
+  font-size:15px;
+  background:rgba(22,77,61,.7);
+  padding:6px 12px;
+  border-radius:15px;
+}
+
+.favorite{
+  position:absolute;
+  top:11px;
+  right:11px;
+  width:34px;
+  height:34px;
+  border-radius:50%;
+  border:0;
+  background:rgba(255,255,255,.9);
+  color:white;
+  cursor:pointer;
+}
+
+.favorite svg{
+  width:21px;
+  height:21px;
+  stroke:#fff;
+}
+
+.best{
+  position:absolute;
+  top:11px;
+  left:11px;
+  background:var(--green);
+  color:white;
+  padding:5px 10px;
+  border-radius:7px;
+  font-size:11px;
+  font-weight:700;
+}
+
+.product-info{
+  padding:13px;
+}
+
+.product-name{
+  font-size:16px;
+  font-weight:700;
+  color:var(--text);
+  margin-bottom:5px;
+}
+
+.price{
+  font-size:16px;
+  font-weight:800;
+  color:#333;
+  margin-bottom:7px;
+}
+
+.rating{
+  display:flex;
+  direction:rtl;
+  gap:2px;
+  font-size:15px;
+  margin-bottom:11px;
+}
+
+.rating span{
+  color:#d0a83f;
+}
+
+.rating span.dark{
+  color:var(--green);
+}
+
+.add-cart{
+  width:100%;
+  height:39px;
+  border:0;
+  border-radius:8px;
+  background:var(--green);
+  color:white;
+  font-size:13px;
+  font-weight:700;
+  cursor:pointer;
+}
+
+/* ================= BOTTOM NAV ================= */
+
+.bottom-nav{
+  position:fixed;
+  bottom:0;
+  right:0;
+  left:0;
+  height:76px;
+  background:rgba(250,248,242,.98);
+  border-top:1px solid #ddd9d0;
+  display:flex;
+  justify-content:space-around;
+  align-items:center;
+  z-index:200;
+}
+
+.nav-item{
+  border:0;
+  background:transparent;
+  color:#365448;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:4px;
+  font-size:12px;
+  cursor:pointer;
+  min-width:65px;
+}
+
+.nav-item svg{
+  width:25px;
+  height:25px;
+  stroke-width:1.7;
+}
+
+.nav-item.active{
+  color:var(--green);
+  font-weight:800;
+}
+
+.nav-item.active svg{
+  stroke-width:2.5;
+}
+
+/* ================= MOBILE ================= */
+
+@media(max-width:700px){
+
+  body{
+    padding-bottom:78px;
   }
 
-  .search {
-    order: 3;
-    flex-basis: 100%;
+  .header{
+    height:105px;
+    padding:10px 4%;
+    gap:5px;
   }
 
-  .products {
-    grid-template-columns: repeat(2, 1fr);
+  .header-side{
+    width:80px;
   }
 
-  .product-image {
-    height: 190px;
+  .header-side.left{
+    justify-content:flex-start;
   }
+
+  .header-side.right{
+    justify-content:flex-end;
+  }
+
+  .logo-name{
+    font-size:36px;
+  }
+
+  .logo-leaf{
+    font-size:22px;
+    height:20px;
+  }
+
+  .logo-sub{
+    font-size:9px;
+    margin-top:5px;
+  }
+
+  .cart-icon{
+    width:35px;
+    height:35px;
+  }
+
+  .support-icon{
+    width:34px;
+    height:34px;
+  }
+
+  .cart-count{
+    width:19px;
+    height:19px;
+    font-size:9px;
+  }
+
+  .search-area{
+    padding:0 4%;
+  }
+
+  .search-box{
+    height:58px;
+  }
+
+  .hero{
+    margin:18px 3.5% 0;
+    height:310px;
+  }
+
+  .hero-content{
+    right:7%;
+    max-width:52%;
+  }
+
+  .hero-logo{
+    font-size:38px;
+  }
+
+  .hero-sub{
+    font-size:13px;
+  }
+
+  .hero-text{
+    font-size:11px;
+    line-height:1.7;
+  }
+
+  .shop-now{
+    font-size:12px;
+    padding:10px 17px;
+  }
+
+  .section{
+    margin:25px 3.5%;
+  }
+
+  .section-title{
+    font-size:23px;
+  }
+
+  .categories{
+    grid-template-columns:repeat(5,1fr);
+    gap:9px;
+  }
+
+  .category{
+    min-height:100px;
+    border-radius:13px;
+  }
+
+  .category-icon{
+    width:45px;
+    height:45px;
+  }
+
+  .category-icon svg{
+    width:38px;
+    height:38px;
+  }
+
+  .category-name{
+    font-size:11px;
+  }
+
+  .products{
+    grid-template-columns:repeat(2,1fr);
+    gap:10px;
+  }
+
+  .product-image{
+    height:155px;
+  }
+
+  .product-info{
+    padding:10px;
+  }
+
+  .product-name{
+    font-size:13px;
+  }
+
+  .price{
+    font-size:13px;
+  }
+
+  .add-cart{
+    height:35px;
+    font-size:11px;
+  }
+
+  .rating{
+    font-size:12px;
+  }
+
 }
 
-/* ===== MOBILE ===== */
+/* ================= SMALL PHONES ================= */
 
-@media (max-width: 500px) {
+@media(max-width:390px){
 
-  header {
-    padding: 13px 4%;
+  .categories{
+    grid-template-columns:repeat(5,85px);
+    overflow-x:auto;
   }
 
-  .logo {
-    font-size: 23px;
+  .category{
+    min-width:85px;
   }
 
-  .cart {
-    padding: 9px 14px;
-    font-size: 12px;
+  .hero-content{
+    max-width:55%;
   }
 
-  .hero {
-    margin: 18px 4%;
-    min-height: 230px;
-    padding: 28px;
-    border-radius: 23px;
+  .hero-logo{
+    font-size:33px;
   }
 
-  .hero h1 {
-    font-size: 32px;
-  }
-
-  .hero p {
-    font-size: 14px;
-  }
-
-  .section {
-    margin: 32px 4%;
-  }
-
-  .section-title {
-    font-size: 23px;
-  }
-
-  .categories {
-    gap: 20px;
-  }
-
-  .category-icon {
-    width: 65px;
-    height: 65px;
-  }
-
-  .products {
-    gap: 12px;
-  }
-
-  .product {
-    border-radius: 17px;
-  }
-
-  .product-image {
-    height: 155px;
-  }
-
-  .product-info {
-    padding: 12px;
-  }
-
-  .product-name {
-    font-size: 14px;
-  }
-
-  .product-description {
-    font-size: 11px;
-  }
-
-  .price {
-    font-size: 14px;
-  }
-
-  .add {
-    font-size: 11px;
-    padding: 7px 9px;
-  }
 }
+
 </style>
 </head>
 
 <body>
 
-<header>
+<!-- ================= HEADER ================= -->
+
+<header class="header">
+
+  <div class="header-side right">
+
+    <!-- خدمة العملاء -->
+    <button class="support" aria-label="خدمة العملاء">
+
+      <svg class="support-icon" viewBox="0 0 24 24" fill="none"
+      stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+
+        <path d="M4 13v-1a8 8 0 0 1 16 0v1"/>
+        <path d="M4 13h3v5H5a1 1 0 0 1-1-1z"/>
+        <path d="M20 13h-3v5h2a1 1 0 0 0 1-1z"/>
+        <path d="M17 19c-.8 1-2 1.5-4 1.5"/>
+
+      </svg>
+
+    </button>
+
+  </div>
+
 
   <div class="logo">
-    من <span>قريب</span>
+
+    <span class="logo-leaf">🌿</span>
+
+    <div class="logo-name">
+      من قريب
+    </div>
+
+    <div class="logo-sub">
+      كل ما تحتاجه .. أقرب إليك
+    </div>
+
   </div>
 
-  <div class="search">
-    <input type="search" placeholder="ابحث عن منتج...">
-  </div>
 
-  <button class="cart">
-    🛒 السلة
-  </button>
+  <div class="header-side left">
+
+    <!-- السلة -->
+    <button class="cart" aria-label="السلة">
+
+      <svg class="cart-icon" viewBox="0 0 24 24" fill="none"
+      stroke="currentColor" stroke-linecap="round"
+      stroke-linejoin="round">
+
+        <path d="M3 4h2l2.4 11.2a2 2 0 0 0 2 1.6h7.8a2 2 0 0 0 2-1.5L21 8H6"/>
+        <circle cx="10" cy="20" r="1"/>
+        <circle cx="18" cy="20" r="1"/>
+        <path d="M8 12h10"/>
+
+      </svg>
+
+      <span class="cart-count" id="cartCount">2</span>
+
+    </button>
+
+  </div>
 
 </header>
 
+
+<!-- ================= SEARCH ================= -->
+
+<div class="search-area">
+
+  <div class="search-box">
+
+    <input
+      type="search"
+      placeholder="ابحث عن منتج، علامة تجارية، أو أي شيء..."
+      aria-label="البحث"
+    >
+
+    <svg viewBox="0 0 24 24" fill="none"
+    stroke="currentColor" stroke-linecap="round"
+    stroke-linejoin="round">
+
+      <circle cx="11" cy="11" r="7"/>
+      <path d="m20 20-4-4"/>
+
+    </svg>
+
+  </div>
+
+</div>
+
+
+<!-- ================= HERO ================= -->
 
 <section class="hero">
 
   <div class="hero-content">
 
-    <small>متجرك المحلي</small>
+    <div class="hero-logo">
+      من قريب
+    </div>
 
-    <h1>كل اللي تحتاجه<br>من قريب.</h1>
+    <div class="hero-sub">
+      كل ما تحتاجه .. أقرب إليك
+    </div>
 
-    <p>
-      اكتشف منتجات متنوعة من حولك،
-      واختر اللي يناسبك بكل سهولة.
-    </p>
+    <div class="hero-text">
+      تسوق بسهولة، واستمتع بتجربة فريدة
+      مع تشكيلة واسعة من المنتجات المميزة.
+    </div>
+
+    <button class="shop-now">
+      تسوق الآن <span>‹</span>
+    </button>
+
+  </div>
+
+  <div class="hero-dots">
+
+    <span class="hero-dot active"></span>
+    <span class="hero-dot"></span>
+    <span class="hero-dot"></span>
+    <span class="hero-dot"></span>
 
   </div>
 
 </section>
 
 
+<!-- ================= CATEGORIES ================= -->
+
 <section class="section">
 
-  <div class="section-header">
-    <h2 class="section-title">تسوق حسب القسم</h2>
-  </div>
+  <h2 class="section-title">
+    تصفح الأقسام
+  </h2>
 
   <div class="categories">
 
     <button class="category">
-      <div class="category-icon">✨</div>
-      <div class="category-name">الكل</div>
+
+      <div class="category-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+          <circle cx="8" cy="8" r="2"/>
+          <circle cx="16" cy="8" r="2"/>
+          <circle cx="8" cy="16" r="2"/>
+          <circle cx="16" cy="16" r="2"/>
+        </svg>
+      </div>
+
+      <div class="category-name">جميع الأقسام</div>
+
     </button>
 
-    <button class="category">
-      <div class="category-icon">📱</div>
-      <div class="category-name">إلكترونيات</div>
-    </button>
 
     <button class="category">
-      <div class="category-icon">👕</div>
-      <div class="category-name">أزياء</div>
+
+      <div class="category-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+          <path d="M4 10h16v10H4z"/>
+          <path d="M6 10V6h12v4"/>
+          <path d="M8 6V3h8v3"/>
+        </svg>
+      </div>
+
+      <div class="category-name">المكتب والإكسسوارات</div>
+
     </button>
 
-    <button class="category">
-      <div class="category-icon">🏠</div>
-      <div class="category-name">منزل</div>
-    </button>
 
     <button class="category">
-      <div class="category-icon">🧴</div>
-      <div class="category-name">عناية</div>
+
+      <div class="category-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+          <rect x="4" y="6" width="16" height="12" rx="1"/>
+          <path d="M8 19h8"/>
+          <path d="M9 9h6v5H9z"/>
+        </svg>
+      </div>
+
+      <div class="category-name">الإلكترونيات</div>
+
     </button>
 
+
     <button class="category">
-      <div class="category-icon">🎁</div>
-      <div class="category-name">أخرى</div>
+
+      <div class="category-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+          <circle cx="12" cy="8" r="3"/>
+          <path d="M6 21c.5-4 2.5-6 6-6s5.5 2 6 6"/>
+        </svg>
+      </div>
+
+      <div class="category-name">الأطفال</div>
+
+    </button>
+
+
+    <button class="category">
+
+      <div class="category-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+          <path d="M4 7h16"/>
+          <path d="M6 7l1-3h10l1 3"/>
+          <path d="M5 7v13h14V7"/>
+          <path d="M9 11v5"/>
+          <path d="M15 11v5"/>
+        </svg>
+      </div>
+
+      <div class="category-name">الملابس</div>
+
+    </button>
+
+
+    <button class="category">
+
+      <div class="category-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+          <path d="M5 11h14v9H5z"/>
+          <path d="M8 11V7h8v4"/>
+          <path d="M10 4h4"/>
+        </svg>
+      </div>
+
+      <div class="category-name">المنزل والمطبخ</div>
+
+    </button>
+
+
+    <button class="category">
+
+      <div class="category-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+          <path d="M6 20V10h12v10"/>
+          <path d="M8 10V6h8v4"/>
+          <path d="M10 6V3h4v3"/>
+        </svg>
+      </div>
+
+      <div class="category-name">الجمال والعناية</div>
+
+    </button>
+
+
+    <button class="category">
+
+      <div class="category-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+          <path d="M5 7h14l-1 13H6z"/>
+          <path d="M9 7V5a3 3 0 0 1 6 0v2"/>
+        </svg>
+      </div>
+
+      <div class="category-name">الرياضة واللياقة</div>
+
+    </button>
+
+
+    <button class="category">
+
+      <div class="category-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+          <path d="M5 5h14v14H5z"/>
+          <path d="M8 8h8v8H8z"/>
+        </svg>
+      </div>
+
+      <div class="category-name">الكتب والهوايات</div>
+
+    </button>
+
+
+    <button class="category">
+
+      <div class="category-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+          <path d="M7 9h10l2 11H5z"/>
+          <path d="M9 9V6a3 3 0 0 1 6 0v3"/>
+        </svg>
+      </div>
+
+      <div class="category-name">المزيد</div>
+
     </button>
 
   </div>
 
 </section>
 
+
+<!-- ================= PRODUCTS ================= -->
 
 <section class="section">
 
-  <div class="section-header">
-    <h2 class="section-title">منتجات مميزة</h2>
+  <div class="products-header">
+
+    <h2 class="section-title">
+      أبرز المنتجات
+    </h2>
+
+    <button class="view-all">
+      عرض الكل
+    </button>
+
   </div>
+
 
   <div class="products">
 
+
     <article class="product">
 
       <div class="product-image">
-        صورة المنتج
+
+        <span>صورة المنتج</span>
+
+        <button class="favorite">
+          ♡
+        </button>
+
       </div>
 
       <div class="product-info">
 
         <div class="product-name">
-          منتج تجريبي
+          حقيبة ظهر عصرية
         </div>
 
-        <div class="product-description">
-          وصف مختصر للمنتج يظهر هنا.
+        <div class="price">
+          179 ل.س
         </div>
 
-        <div class="product-bottom">
-
-          <div class="price">
-            50,000 ل.س
-          </div>
-
-          <button class="add">
-            أضف للسلة
-          </button>
-
+        <div class="rating">
+          <span class="dark">★</span>
+          <span class="dark">★</span>
+          <span class="dark">★</span>
+          <span>★</span>
+          <span>★</span>
         </div>
+
+        <button class="add-cart">
+          🛒 أضف إلى السلة
+        </button>
 
       </div>
 
@@ -526,30 +1068,40 @@ footer p {
     <article class="product">
 
       <div class="product-image">
-        صورة المنتج
+
+        <span>صورة المنتج</span>
+
+        <div class="best">
+          الأكثر مبيعاً
+        </div>
+
+        <button class="favorite">
+          ♡
+        </button>
+
       </div>
 
       <div class="product-info">
 
         <div class="product-name">
-          منتج تجريبي
+          ساعة ذكية
         </div>
 
-        <div class="product-description">
-          وصف مختصر للمنتج يظهر هنا.
+        <div class="price">
+          299 ل.س
         </div>
 
-        <div class="product-bottom">
-
-          <div class="price">
-            75,000 ل.س
-          </div>
-
-          <button class="add">
-            أضف للسلة
-          </button>
-
+        <div class="rating">
+          <span class="dark">★</span>
+          <span class="dark">★</span>
+          <span class="dark">★</span>
+          <span>★</span>
+          <span>★</span>
         </div>
+
+        <button class="add-cart">
+          🛒 أضف إلى السلة
+        </button>
 
       </div>
 
@@ -559,76 +1111,142 @@ footer p {
     <article class="product">
 
       <div class="product-image">
-        صورة المنتج
+
+        <span>صورة المنتج</span>
+
+        <button class="favorite">
+          ♡
+        </button>
+
       </div>
 
       <div class="product-info">
 
         <div class="product-name">
-          منتج تجريبي
+          حذاء رياضي مريح
         </div>
 
-        <div class="product-description">
-          وصف مختصر للمنتج يظهر هنا.
+        <div class="price">
+          249 ل.س
         </div>
 
-        <div class="product-bottom">
-
-          <div class="price">
-            100,000 ل.س
-          </div>
-
-          <button class="add">
-            أضف للسلة
-          </button>
-
+        <div class="rating">
+          <span class="dark">★</span>
+          <span class="dark">★</span>
+          <span class="dark">★</span>
+          <span>★</span>
+          <span>★</span>
         </div>
+
+        <button class="add-cart">
+          🛒 أضف إلى السلة
+        </button>
 
       </div>
 
     </article>
 
-
-    <article class="product">
-
-      <div class="product-image">
-        صورة المنتج
-      </div>
-
-      <div class="product-info">
-
-        <div class="product-name">
-          منتج تجريبي
-        </div>
-
-        <div class="product-description">
-          وصف مختصر للمنتج يظهر هنا.
-        </div>
-
-        <div class="product-bottom">
-
-          <div class="price">
-            125,000 ل.س
-          </div>
-
-          <button class="add">
-            أضف للسلة
-          </button>
-
-        </div>
-
-      </div>
-
-    </article>
 
   </div>
 
 </section>
 
 
-<footer>
-  <p>© 2026 من قريب — متجر محلي</p>
-</footer>
+<!-- ================= BOTTOM NAV ================= -->
+
+<nav class="bottom-nav">
+
+  <button class="nav-item active">
+
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+      <path d="m3 11 9-8 9 8"/>
+      <path d="M5 10v10h14V10"/>
+      <path d="M9 20v-6h6v6"/>
+    </svg>
+
+    الرئيسية
+
+  </button>
+
+
+  <button class="nav-item">
+
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+      <circle cx="12" cy="11" r="7"/>
+      <path d="m8 11 3 3 5-6"/>
+    </svg>
+
+    الأقسام
+
+  </button>
+
+
+  <button class="nav-item">
+
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+      <circle cx="11" cy="11" r="7"/>
+      <path d="m20 20-4-4"/>
+    </svg>
+
+    البحث
+
+  </button>
+
+
+  <button class="nav-item">
+
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+      <path d="M6 4h12v17H6z"/>
+      <path d="M9 8h6"/>
+      <path d="M9 12h6"/>
+    </svg>
+
+    المفضلة
+
+  </button>
+
+
+  <button class="nav-item">
+
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+      <circle cx="12" cy="8" r="3"/>
+      <path d="M5 21c.7-4 3-6 7-6s6.3 2 7 6"/>
+    </svg>
+
+    حسابي
+
+  </button>
+
+</nav>
+
+
+<script>
+
+/* عداد السلة */
+
+let cartCount = 2;
+
+const countElement = document.getElementById("cartCount");
+
+document.querySelectorAll(".add-cart").forEach(button => {
+
+  button.addEventListener("click", () => {
+
+    cartCount++;
+
+    countElement.textContent = cartCount;
+
+    button.textContent = "✓ تمت الإضافة";
+
+    setTimeout(() => {
+      button.textContent = "🛒 أضف إلى السلة";
+    }, 900);
+
+  });
+
+});
+
+</script>
 
 </body>
 </html>
