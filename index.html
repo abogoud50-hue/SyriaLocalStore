@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no,viewport-fit=cover">
+<meta name="theme-color" content="#f5eee3">
+<title>من قريب</title>
+<style>
+@font-face{font-family:Effra;src:url('./fonts/effra-trial-bold.ttf') format('truetype');font-weight:700;font-style:normal;font-display:swap}
+:root{--g:#174d3e;--cream:#f5eee3;--line:#cfc6b7}
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+html,body{width:100%;height:100%;overflow:hidden}
+body{font-family:Effra,sans-serif;background:var(--cream);color:var(--g)}
+button{font-family:Effra,sans-serif;cursor:pointer}
+.welcome{position:relative;width:100%;height:100svh;min-height:560px;overflow:hidden;background:#d9c5a9 url('./welcome-bg.png') center center/cover no-repeat}
+/* الأزرار أعلى من الشريط السفلي حتى لا يختفي زر تسجيل الدخول */
+.actions{position:absolute;z-index:20;left:50%;transform:translateX(-50%);top:68%;width:min(390px,58%);display:flex;flex-direction:column;gap:12px}
+.action{width:100%;height:58px;border-radius:34px;font-size:21px;display:flex;align-items:center;justify-content:center;gap:13px;transition:transform .15s ease}
+.action:active{transform:scale(.975)}
+.shop{background:var(--g);color:#fff;box-shadow:0 5px 13px #174d3e22}
+.login{background:#faf4ebee;color:var(--g);border:2px solid var(--g)}
+svg{fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.icon{width:27px;height:27px;flex:none}.arrow{width:22px;height:22px}
+.benefits{position:absolute;z-index:10;left:0;right:0;bottom:0;min-height:190px;padding:27px 4vw 20px;background:#faf6eef7;border-radius:50% 50% 0 0/11% 11% 0 0;display:grid;grid-template-columns:repeat(4,1fr);align-items:start}
+.benefit{position:relative;min-width:0;min-height:125px;padding:0 8px;text-align:center;display:flex;flex-direction:column;align-items:center}
+.benefit:not(:last-child)::after{content:'';position:absolute;top:5px;left:0;width:1px;height:82px;background:var(--line)}
+.bicon{width:38px;height:38px;margin-bottom:7px}
+.title{font-size:14px;line-height:1.25;margin-bottom:5px}.text{font-size:10.5px;line-height:1.4;color:#516158;max-width:150px}
+/* لا يوجد انتقال لملف غير موجود حاليًا؛ نربط الصفحات بعد بنائها */
+@media(max-width:700px){.actions{width:58%;min-width:245px;top:67.1%}.action{height:57px;font-size:20px}.icon{width:25px;height:25px}.benefits{min-height:190px;padding:26px 8px 20px}.benefit{padding:0 5px}.bicon{width:36px;height:36px}.title{font-size:14px}.text{font-size:10.5px}}
+@media(max-height:700px){.actions{top:60%}.benefits{min-height:160px;padding-top:18px}.benefit{min-height:105px}.bicon{width:30px;height:30px}.title{font-size:12px}.text{font-size:9px}}
+</style>
+</head>
+<body>
+<main class="welcome">
+<section class="actions">
+<button class="action shop" type="button" onclick="startShopping()">
+<span>تسوق الآن</span>
+<svg class="icon" viewBox="0 0 24 24"><path d="M3.5 4.5h2l2.1 10.1a2 2 0 0 0 2 1.6h7.8a2 2 0 0 0 1.9-1.4L21 7H6.2"/><circle cx="10" cy="19" r="1.25"/><circle cx="18" cy="19" r="1.25"/></svg>
+<svg class="arrow" viewBox="0 0 24 24"><path d="M14.5 5 7.5 12l7 7"/></svg>
+</button>
+<button class="action login" type="button" onclick="login()">
+<span>تسجيل الدخول</span>
+<svg class="icon" viewBox="0 0 24 24"><circle cx="12" cy="7.5" r="3.5"/><path d="M5 20c.7-3.5 3.1-5.4 7-5.4s6.3 1.9 7 5.4"/></svg>
+</button>
+</section>
+<section class="benefits">
+<div class="benefit"><svg class="bicon" viewBox="0 0 24 24"><path d="M4 8.5 12 4l8 4.5v9L12 21l-8-3.5z"/><path d="M4 8.5 12 13l8-4.5M12 13v8M8 6.2 16 11"/></svg><div class="title">تغليف أنيق</div><div class="text">لأنك تستحق الأفضل</div></div>
+<div class="benefit"><svg class="bicon" viewBox="0 0 24 24"><path d="M12 3 19 6v5.2c0 4.4-2.7 7.9-7 9.8-4.3-1.9-7-5.4-7-9.8V6z"/><path d="m8.7 12 2.1 2.1 4.5-4.5"/></svg><div class="title">دفع آمن</div><div class="text">بجميع طرق الدفع</div></div>
+<div class="benefit"><svg class="bicon" viewBox="0 0 24 24"><path d="M3 6.5h11v10H3z"/><path d="M14 10h4l3 3v3.5h-7z"/><circle cx="7" cy="18" r="1.8"/><circle cx="18" cy="18" r="1.8"/><path d="M14 14h7"/></svg><div class="title">توصيل سريع</div><div class="text">لجميع المناطق</div></div>
+<div class="benefit"><svg class="bicon" viewBox="0 0 24 24"><path d="M4 13v-1a8 8 0 0 1 16 0v1"/><path d="M4 13h3v5H4a2 2 0 0 1-2-2v-1a2 2 0 0 1 2-2Z"/><path d="M20 13h-3v5h3a2 2 0 0 0 2-2v-1a2 2 0 0 0-2-2Z"/><path d="M17 18c0 1.1-.9 2-2 2h-2"/></svg><div class="title">خدمة عملاء</div><div class="text">على مدار الساعة</div></div>
+</section>
+</main>
+<script>
+function startShopping(){
+    // الصفحة الرئيسية لم ننشئها بعد، لذلك لا ننتقل إلى ملف غير موجود.
+    alert('الصفحة الرئيسية قيد التجهيز، وسيتم ربط هذا الزر بها بعد إنشائها.');
+}
+function login(){
+    alert('صفحة تسجيل الدخول قيد التجهيز.');
+}
+</script>
+</body>
+</html>
